@@ -81,11 +81,3 @@ docker-compose run user-b transfer 1 0xRecipientAddress
 - Test wallets use Anvil defaults
 
 ---
-
-##  Next Steps
-
-- Compile the contract and update `shared/abi.json`
-- Deploy contract and get address
-- Expand with more users or a REST API/UI
-
----

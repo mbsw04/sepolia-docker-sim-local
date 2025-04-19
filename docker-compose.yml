@@ -1,0 +1,32 @@
+
+version: "3.8"
+services:
+  sepolia-node:
+    image: ghcr.io/foundry-rs/anvil:latest
+    command: anvil --host 0.0.0.0
+    ports:
+      - "8545:8545"
+    networks:
+      - local-eth-net
+
+  user-a:
+    build: ./user-a
+    depends_on:
+      - sepolia-node
+    environment:
+      - CONTRACT_ADDRESS=0xYourContractAddress
+    networks:
+      - local-eth-net
+
+  user-b:
+    build: ./user-b
+    depends_on:
+      - sepolia-node
+    environment:
+      - CONTRACT_ADDRESS=0xYourContractAddress
+    networks:
+      - local-eth-net
+
+networks:
+  local-eth-net:
+    driver: bridge
